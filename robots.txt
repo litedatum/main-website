@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://litedatum.com/sitemap.xml
+
+# Optional: Block common bot directories if needed
+# Disallow: /admin/
+# Disallow: /private/

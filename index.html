@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LiteDatum - Professional data quality and schema validation solutions. Discover ValidateLite, a lightweight Python data validation tool for data engineers and architects.">
+    <meta name="keywords" content="data quality, data validation tool, schema validation, python data validation, pydantic, data engineer, data architect, CLI tool, lightweight data validation">
+    <meta name="author" content="Charles Fan, Senior Data Architect">
+    <title>LiteDatum - Data Quality & Validation Solutions | ValidateLite Python Tool</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://litedatum.com/">
+    <meta property="og:title" content="LiteDatum - Data Quality & Validation Solutions">
+    <meta property="og:description" content="Professional data quality and schema validation solutions. Discover ValidateLite, a lightweight Python data validation tool for data engineers.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="LiteDatum - Data Quality & Validation Solutions">
+    <meta property="twitter:description" content="Professional data quality and schema validation solutions. Discover ValidateLite, a lightweight Python data validation tool.">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+        
+        /* Main Content */
+        main {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            min-height: 70vh;
+            padding: 3rem 0;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .feature-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin: 0 -20px;
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0;
+            margin: 0 -20px;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+        
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        footer a:hover {
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 250px;
+                justify-content: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .feature-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .feature-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .feature-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">LiteDatum</h1>
+            <p class="tagline">Professional Data Quality & Schema Validation Solutions</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <h2 class="hero-title">Lightweight Data Validation for Modern Data Engineers</h2>
+                <p class="hero-subtitle">
+                    Streamline your data quality workflows with professional-grade validation tools. 
+                    From Python CLI utilities to comprehensive schema validation, we help data architects 
+                    and engineers build robust data pipelines with confidence.
+                </p>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-title">ValidateLite CLI Tool</h3>
+                    <p class="feature-description">
+                        A lightweight Python data validation tool designed for developers. 
+                        Get started in 30 seconds with our Pydantic-powered schema validation engine. 
+                        Perfect for data quality checks in CI/CD pipelines.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3 class="feature-title">Technical Blog</h3>
+                    <p class="feature-description">
+                        Deep-dive into data engineering best practices, Python app development, 
+                        and AI pair programming. Learn from real-world experiences building 
+                        production data validation systems.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Open Source Community</h3>
+                    <p class="feature-description">
+                        Join our growing community of data professionals. Contribute to ValidateLite, 
+                        share feedback, and collaborate on solving real data quality challenges 
+                        together.
+                    </p>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <div class="container">
+                    <h2 class="cta-title">Ready to Improve Your Data Quality?</h2>
+                    <p>Start validating your data with professional-grade tools today</p>
+                    <div class="cta-buttons">
+                        <a href="https://github.com/litedatum/validatelite" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i>
+                            Try ValidateLite
+                        </a>
+                        <a href="https://blog.litedatum.com/" target="_blank" class="btn btn-secondary">
+                            <i class="fas fa-book"></i>
+                            Read Technical Blog
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <div class="container">
+                    <div class="about-content">
+                        <h2 class="about-title">About the Author</h2>
+                        <p class="about-text">
+                            Hi, I'm Charles Fan, a senior data architect with extensive experience 
+                            in building Java-based data quality tools and Python data validation systems. 
+                            I'm passionate about creating lightweight, developer-friendly solutions 
+                            that solve real data engineering challenges. Through LiteDatum, I share 
+                            practical insights from building production data systems and open-source tools.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LiteDatum. All Rights Reserved. | 
+               <a href="https://github.com/litedatum" target="_blank">
+                   <i class="fab fa-github"></i> GitHub Profile
+               </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
