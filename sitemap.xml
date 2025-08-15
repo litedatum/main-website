@@ -6,13 +6,7 @@
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
-    <!-- Blog homepage only - detailed blog posts should be in blog's own sitemap -->
-    <url>
-        <loc>https://blog.litedatum.com/</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    <!-- Blog homepage removed - should be in blog's own sitemap -->
     <!-- Add other main site pages here as needed -->
     <!-- 
     Example for future pages:
