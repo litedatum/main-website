@@ -749,7 +749,7 @@
                 <p><strong>ValidateLite</strong>, however, lives in an entirely different universe—the database schema validation landscape. It doesn't care about your pristine JSON documents. Instead, it obsesses over the structural integrity and data quality of your database tables. It asks different questions: Does column <code>user_email</code> actually exist? Are the data types aligned with your schema definitions? Do the values respect the constraints you've defined?</p>
 
 <pre><code class="language-bash"># ValidateLite validates database reality
-vlite schema "mysql://user:pass@host:3306/sales.users" \
+vlite schema --conn "mysql://user:pass@host:3306/sales" \
   --rules schema.json \
   --output json</code></pre>
 
@@ -829,7 +829,7 @@ vlite schema "mysql://user:pass@host:3306/sales.users" \
 
 <pre><code class="language-bash"># Install and validate in seconds
 pip install validatelite
-vlite schema "mysql://user:pass@host:3306/sales.users" --rules schema.json</code></pre>
+vlite schema --conn "mysql://user:pass@host:3306/sales" --rules schema.json</code></pre>
 
                 <p>This zero-config philosophy addresses <a href="https://litedatum.com/what-is-schema-drift">schema drift</a> and data quality issues without the overhead of heavyweight frameworks.</p>
 

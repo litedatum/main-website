@@ -743,7 +743,7 @@
                 <p>Consider this scenario: A customer registration system accepts malformed email addresses. Months later, your marketing team discovers thousands of undeliverable addresses. The cost? Not just failed campaigns, but damaged sender reputation and frustrated customers.</p>
 
                 <pre><code class="language-bash"># Basic format validation example
-vlite schema users.csv --rules user_schema.json</code></pre>
+vlite schema --conn users.csv --rules user_schema.json</code></pre>
 
                 <p>Modern data validation tools employ regular expressions, built-in validators, and custom rules to catch format violations. They transform data type chaos into structured harmony.</p>
 
@@ -781,14 +781,14 @@ vlite schema users.csv --rules user_schema.json</code></pre>
 pip install validatelite
 
 # Validate CSV against JSON schema
-vlite check users.csv --rule=not_null(name) --rule=range(age,0,120)</code></pre>
+vlite check --conn users.csv --rule=not_null(name) --rule=range(age,0,120)</code></pre>
 
                 <h3>Database Validation with SQL Pushdown</h3>
 
                 <p>ValidateLite's SQL pushdown capability leverages database performance for large-scale validation:</p>
 
                 <pre><code class="language-bash"># Validate directly in database
-vlite schema "postgresql://user:pass@host/db.user" --rules user_schema.json</code></pre>
+vlite schema -- conn "postgresql://user:pass@host/db.user" --rules user_schema.json</code></pre>
 
                 <p>This approach processes millions of records efficiently by executing validation logic where data resides. No data movement required.</p>
 
@@ -797,12 +797,14 @@ vlite schema "postgresql://user:pass@host/db.user" --rules user_schema.json</cod
                 <p>ValidateLite uses JSON schemas to define validation rules:</p>
 
                 <pre><code class="language-json">{
-  "columns": {
-    "user_id": {"type": "integer", "required": true, "unique": true},
-    "email": {"type": "string", "format": "email", "required": true},
-    "age": {"type": "integer", "min": 0, "max": 120},
-    "signup_date": {"type": "string", "format": "date"}
-  }
+  "user": {
+      "columns": {
+      "user_id": {"type": "integer", "required": true, "unique": true},
+      "email": {"type": "string", "format": "email", "required": true},
+      "age": {"type": "integer", "min": 0, "max": 120},
+      "signup_date": {"type": "string", "format": "date"}
+      }
+   }
 }</code></pre>
 
                 <p>This schema addresses multiple validation dimensions simultaneously. It ensures user_id uniqueness, validates email format, enforces age boundaries, and verifies date formatting.</p>
@@ -810,7 +812,7 @@ vlite schema "postgresql://user:pass@host/db.user" --rules user_schema.json</cod
                 <h3>Handling Validation Results</h3>
 
                 <pre><code class="language-bash"># Generate detailed validation report
-vlite schema users.csv --rules schema.json --output json</code></pre>
+vlite schema --conn users.csv --rules schema.json --output json</code></pre>
 
                 <p>The tool produces comprehensive reports showing validation failures, error counts, and affected records in JSON. This information guides data cleaning efforts and reveals data quality trends.</p>
 

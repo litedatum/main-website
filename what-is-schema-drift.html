@@ -805,22 +805,24 @@
                 <p>Create a JSON schema file that describes your expected table structure:</p>
 
 <pre><code class="language-json">{
-  "rules": [
-    { "field": "id", "type": "integer", "required": true },
-    { "field": "email", "type": "string", "required": true },
-    { "field": "user_tier", "type": "string", "enum": ["FREE", "PREMIUM"] },
-    { "field": "age", "type": "integer", "min": 0, "max": 120 },
-    { "field": "created_at", "type": "datetime" }
-  ],
-  "strict_mode": true,
-  "case_insensitive": false
+  "users": {
+    "rules": [
+      { "field": "id", "type": "integer", "required": true },
+      { "field": "email", "type": "string", "required": true },
+      { "field": "user_tier", "type": "string", "enum": ["FREE", "PREMIUM"] },
+      { "field": "age", "type": "integer", "min": 0, "max": 120 },
+      { "field": "created_at", "type": "datetime" }
+    ],
+    "strict_mode": true,
+    "case_insensitive": false
+  }
 }</code></pre>
 
                 <h3>Step 2: Run the Schema Validation Command</h3>
 
                 <p>ValidateLite connects to your database table and validates it against your schema definition:</p>
 
-<pre><code class="language-bash">vlite schema "mysql://user:pass@localhost:3306/mydb.users" --rules schema.json</code></pre>
+<pre><code class="language-bash">vlite schema --conn "mysql://user:pass@localhost:3306/mydb" --rules schema.json</code></pre>
 
                 <h3>Step 3: Interpret the Results (The Payoff)</h3>
 
@@ -845,7 +847,7 @@ Column: marketing_consent
 
                 <p>For automation and CI/CD integration, use JSON output:</p>
 
-<pre><code class="language-bash">vlite schema "postgresql://user:pass@localhost/mydb.users" \
+<pre><code class="language-bash">vlite schema --conn "postgresql://user:pass@localhost/mydb.users" \
   --rules schema.json \
   --output json</code></pre>
 
@@ -890,7 +892,7 @@ jobs:
         run: pip install validatelite
       - name: Validate User Schema
         run: |
-          vlite schema "mysql://user:pass@testdb:3306/myapp.users" \
+          vlite schema --conn "mysql://user:pass@testdb:3306/myapp" \
             --rules schemas/users.json \
             --output json > schema_results.json
           
@@ -902,7 +904,7 @@ jobs:
           fi
       - name: Validate Orders Schema  
         run: |
-          vlite schema "mysql://user:pass@testdb:3306/myapp.orders" \
+          vlite schema --conn "mysql://user:pass@testdb:3306/myapp" \
             --rules schemas/orders.json</code></pre>
 
                 <p>Any pull request that introduces <strong>schema drift</strong> gets automatically blocked. Your main branch stays clean. Your production database stays consistent.</p>
@@ -917,7 +919,7 @@ jobs:
                 script {
                     def exitCode = sh(
                         script: '''
-                            vlite schema "${DATABASE_URL}/users" \
+                            vlite schema --conn "${DATABASE_URL}" \
                               --rules schemas/users.json \
                               --output json
                         ''',
@@ -992,7 +994,7 @@ jobs:
                 <div class="faq-item">
                     <button class="faq-question">Q: How does this work with microservices? <span>+</span></button>
                     <div class="faq-answer">
-                        <p>A: Each service validates its own tables independently. ValidateLite's syntax <code>vlite schema "database_url/table_name"</code> means you can validate specific tables without affecting others. Each microservice maintains its own schema files and validates only the tables it owns, ensuring loose coupling while maintaining schema integrity.</p>
+                        <p>A: Each service validates its own tables independently. ValidateLite's syntax <code>vlite schema --conn "database_url"</code> means you can validate specific tables without affecting others. Each microservice maintains its own schema files and validates only the tables it owns, ensuring loose coupling while maintaining schema integrity.</p>
                     </div>
                 </div>
 
@@ -1027,10 +1029,10 @@ vlite --version</code></pre>
                 <p>Your first schema validation can run immediately:</p>
 
 <pre><code class="language-bash"># Test against your existing database
-vlite schema "mysql://user:pass@localhost:3306/mydb.users" --rules user_schema.json
+vlite schema --conn "mysql://user:pass@localhost:3306/mydb" --rules user_schema.json
 
 # Or use the verbose flag to see detailed information
-vlite schema "postgresql://user:pass@localhost:5432/app.customers" \
+vlite schema --conn "postgresql://user:pass@localhost:5432/app" \
   --rules customer_schema.json \
   --verbose</code></pre>
 

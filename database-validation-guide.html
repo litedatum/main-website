@@ -844,7 +844,7 @@ CHECK (age >= 0 AND age <= 150);</code></pre>
 pip install validatelite
 
 # Validate customer data against schema
-vlite schema customers.csv --rules customer_schema.json --output json</code></pre>
+vlite schema --conn customers.csv --rules customer_schema.json --output json</code></pre>
 
                 <h4>Schema Definition for Database Compatibility</h4>
 
@@ -905,7 +905,7 @@ vlite schema customers.csv --rules customer_schema.json --output json</code></pr
                 <h4>Execution and Error Handling</h4>
 
                 <pre><code class="language-bash"># Comprehensive validation with detailed reporting
-vlite schema customers.csv --rules customer_schema.json --output json --verbose</code></pre>
+vlite schema --conn customers.csv --rules customer_schema.json --output json --verbose</code></pre>
 
                 <p>ValidateLite produces structured error reports identifying specific validation failures:</p>
 
