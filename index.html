@@ -3,154 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional data quality and schema validation solutions. Discover ValidateLite, a lightweight Python data validation tool for data engineers.">
-    <meta name="keywords" content="data quality, data validation tool, schema validation, python data validation, pydantic, data engineer, data architect, CLI tool, lightweight data validation">
-    <meta name="author" content="Charles Fan, Senior Data Architect">
-    <title>LiteDatum - Data Quality & Validation Solutions</title>
-    
-    <!-- Canonical URL for SEO -->
-    <link rel="canonical" href="https://litedatum.com/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://litedatum.com/">
-    <meta property="og:title" content="LiteDatum - Data Quality & Validation Solutions">
-    <meta property="og:description" content="Professional data quality and schema validation solutions. Discover ValidateLite, a lightweight Python data validation tool for data engineers.">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="LiteDatum - Data Quality & Validation Solutions">
-    <meta property="twitter:description" content="Professional data quality and schema validation solutions. Discover ValidateLite, a lightweight Python data validation tool for data engineers.">
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>LiteDatum - Professional Schema Validation for Excel & CSV Files</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
         header {
-            padding: 2rem 0;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
             color: white;
         }
-        
-        .logo {
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
             font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
-        .tagline {
+
+        .hero .subtitle {
             font-size: 1.3rem;
-            opacity: 0.9;
-            margin-bottom: 3rem;
-        }
-        
-        /* Main Content */
-        main {
-            background: white;
-            border-radius: 20px 20px 0 0;
-            min-height: 70vh;
-            padding: 3rem 0;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .hero-section {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .hero-title {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: #7f8c8d;
             margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            opacity: 0.9;
         }
-        
-        /* Features Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+
+        .hero .highlight {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
         }
-        
-        .feature-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: #667eea;
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-title {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .feature-description {
-            color: #7f8c8d;
-            line-height: 1.6;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            margin: 0 -20px;
-            border-radius: 15px;
-            color: white;
-        }
-        
-        .cta-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
+
         .cta-buttons {
             display: flex;
             gap: 1rem;
@@ -158,104 +96,218 @@
             flex-wrap: wrap;
             margin-top: 2rem;
         }
-        
+
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            display: inline-block;
+            cursor: pointer;
         }
-        
+
         .btn-primary {
-            background: white;
-            color: #667eea;
-        }
-        
-        .btn-secondary {
-            background: transparent;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
             color: white;
-            border-color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         }
-        
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
-        
-        .btn-primary:hover {
-            background: #f8f9fa;
-        }
-        
-        .btn-secondary:hover {
+
+        /* Schema Command Section */
+        .schema-section {
             background: white;
-            color: #667eea;
+            padding: 4rem 0;
+            margin-top: -50px;
+            border-radius: 50px 50px 0 0;
         }
-        
-        /* About Section */
-        .about-section {
-            background: #2c3e50;
-            color: white;
-            padding: 3rem 0;
-            margin: 0 -20px;
-            border-radius: 15px;
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
-        
-        .about-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-        
-        .about-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
-        
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            opacity: 0.9;
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block .command {
+            color: #68d391;
+        }
+
+        .code-block .output {
+            color: #fbb6ce;
+            margin-left: 1rem;
+        }
+
+        /* Excel/CSV Focus Section */
+        .excel-csv-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
             color: white;
-            font-size: 0.9rem;
+            padding: 4rem 0;
         }
-        
-        footer a {
+
+        .excel-csv-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .use-case {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .use-case h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .use-case .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
             color: white;
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
         }
-        
-        footer a:hover {
-            opacity: 1;
+
+        .resource-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
-        
+
+        .resource-card p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #68d391;
+        }
+
+        .footer-section a {
+            color: #e2e8f0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: #68d391;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .logo {
+            .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
+            .hero .subtitle {
+                font-size: 1.1rem;
             }
             
             .cta-buttons {
@@ -263,189 +315,218 @@
                 align-items: center;
             }
             
-            .btn {
-                width: 250px;
-                justify-content: center;
+            .nav-links {
+                display: none;
             }
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .feature-card {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        .feature-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .feature-card:nth-child(3) {
-            animation-delay: 0.4s;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1 class="logo">LiteDatum</h1>
-            <p class="tagline">Professional Data Quality & Schema Validation Solutions</p>
-        </div>
+        <nav class="container">
+            <div class="logo">LiteDatum</div>
+            <ul class="nav-links">
+                <li><a href="#schema">Schema Validation</a></li>
+                <li><a href="#excel-csv">Excel & CSV</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="https://github.com/litedatum/validatelite">GitHub</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <section class="hero-section">
-                <h2 class="hero-title">Lightweight Data Validation for Modern Data Engineers</h2>
-                <p class="hero-subtitle">
-                    Streamline your data quality workflows with professional-grade validation tools. 
-                    From Python CLI utilities to comprehensive schema validation, we help data architects 
-                    and engineers build robust data pipelines with confidence.
-                </p>
-            </section>
-
-            <section class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="feature-title">ValidateLite CLI Tool</h3>
-                    <p class="feature-description">
-                        A lightweight Python data validation tool designed for developers. 
-                        Get started in 30 seconds with our Pydantic-powered schema validation engine. 
-                        Perfect for data quality checks in CI/CD pipelines.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-blog"></i>
-                    </div>
-                    <h3 class="feature-title">Technical Blog</h3>
-                    <p class="feature-description">
-                        Deep-dive into data engineering best practices, Python app development, 
-                        and AI pair programming. Learn from real-world experiences building 
-                        production data validation systems.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="feature-title">Open Source Community</h3>
-                    <p class="feature-description">
-                        Join our growing community of data professionals. Contribute to ValidateLite, 
-                        share feedback, and collaborate on solving real data quality challenges 
-                        together.
-                    </p>
-                </div>
-            </section>
-
-            <section class="cta-section">
-                <div class="container">
-                    <h2 class="cta-title">Ready to Improve Your Data Quality?</h2>
-                    <p>Start validating your data with professional-grade tools today</p>
-                    <div class="cta-buttons">
-                        <a href="https://github.com/litedatum/validatelite" target="_blank" class="btn btn-primary">
-                            <i class="fab fa-github"></i>
-                            Try ValidateLite
-                        </a>
-                        <a href="https://blog.litedatum.com/" target="_blank" class="btn btn-secondary">
-                            <i class="fas fa-book"></i>
-                            Read Technical Blog
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="about-section">
-                <div class="container">
-                    <div class="about-content">
-                        <h2 class="about-title">About the Author</h2>
-                        <p class="about-text">
-                            Hi, I'm Charles Fan, a senior data architect with extensive experience 
-                            in building Java-based data quality tools and Python data validation systems. 
-                            I'm passionate about creating lightweight, developer-friendly solutions 
-                            that solve real data engineering challenges. Through LiteDatum, I share 
-                            practical insights from building production data systems and open-source tools.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Resources section for SEO -->
-            <section style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px; text-align: center;">
-                <h3 style="font-size: 1.2rem; color: #6c757d; margin-bottom: 1rem; font-weight: 500;">Resources & Guides</h3>
-                <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
-                    <a href="what-is-schema-drift.html" style="color: #6c757d; text-decoration: none; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.color='#495057'" onmouseout="this.style.opacity='0.8'; this.style.color='#6c757d'">
-                        What is Schema Drift? Complete Guide
-                    </a>
-                    <a href="database-schema-validation.html" style="color: #6c757d; text-decoration: none; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.color='#495057'" onmouseout="this.style.opacity='0.8'; this.style.color='#6c757d'">
-                        Database Schema Validation
-                    </a>
-                    <a href="validateLite-vs-json-schema-validator.html" style="color: #6c757d; text-decoration: none; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.color='#495057'" onmouseout="this.style.opacity='0.8'; this.style.color='#6c757d'">
-                        ValidateLite vs. JSON Schema Validator
-                    </a>
-                    <a href="data-validation-tools.html" style="color: #6c757d; text-decoration: none; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.color='#495057'" onmouseout="this.style.opacity='0.8'; this.style.color='#6c757d'">
-                        Data Validation Tools
-                    </a>
-                    <a href="database-validation-guide.html" style="color: #6c757d; text-decoration: none; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.color='#495057'" onmouseout="this.style.opacity='0.8'; this.style.color='#6c757d'">
-                        Database Validation Guide
-                    </a>
-                </div>
-            </section>
+            <h1>Professional <span class="highlight">Schema Validation</span><br>for Excel & CSV Files</h1>
+            <p class="subtitle">Zero-config data validation with the power of <code>vlite schema</code> command.<br>Get started in 30 seconds and validate your data like a pro.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/litedatum/validatelite" class="btn btn-primary">Start Validating Now</a>
+                <a href="#schema" class="btn btn-secondary">See Schema Command</a>
+            </div>
         </div>
-    </main>
+    </section>
 
+    <!-- Schema Command Section -->
+    <section id="schema" class="schema-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>The <code>vlite schema</code> Command</h2>
+                <p>Define your data contract once, validate everywhere. Perfect for data cleaning, type conversion assessment, and production quality checks.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🎯 Define Your Schema</h3>
+                    <p>Create a JSON schema that describes your current data and desired types.</p>
+                    <div class="code-block">
+{<br>
+&nbsp;&nbsp;"legacy_users": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"rules": [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "user_id",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type": "string",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"desired_type": "integer"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;&nbsp;}<br>
+}
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3>⚡ Run Validation</h3>
+                    <p>One simple command validates your entire dataset against the schema.</p>
+                    <div class="code-block">
+<span class="command">$ vlite schema --conn data.csv --rules schema.json</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📊 Get Detailed Reports</h3>
+                    <p>Understand exactly what needs to be fixed before you start cleaning.</p>
+                    <div class="code-block">
+FIELD VALIDATION RESULTS<br>
+========================<br>
+Field: user_id<br>
+<span style="color: #68d391;">✓ Field exists (string)</span><br>
+<span style="color: #f56565;">✗ Type Conversion: 15 incompatible records</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Excel/CSV Focus Section -->
+    <section id="excel-csv" class="excel-csv-section">
+        <div class="container">
+            <h2>🚀 Excel & CSV Validation Made Easy</h2>
+            <div class="use-cases">
+                <div class="use-case">
+                    <div class="icon">📊</div>
+                    <h3>Data Cleaning Assessment</h3>
+                    <p>Before you start cleaning messy datasets, know exactly what you're dealing with. ValidateLite assesses type conversion feasibility, saving you hours of guesswork.</p>
+                </div>
+                
+                <div class="use-case">
+                    <div class="icon">🔄</div>
+                    <h3>Type Conversion Planning</h3>
+                    <p>Converting string columns to integers, floats, or dates? Get a detailed report of which records will fail conversion before you write any cleaning code.</p>
+                </div>
+                
+                <div class="use-case">
+                    <div class="icon">⚙️</div>
+                    <h3>CI/CD Integration</h3>
+                    <p>Embed schema validation directly into your data pipelines. Catch data quality issues before they reach production.</p>
+                </div>
+                
+                <div class="use-case">
+                    <div class="icon">📈</div>
+                    <h3>Production Monitoring</h3>
+                    <p>Monitor data quality at every stage of your ETL/ELT processes. Prevent "garbage in, garbage out" scenarios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📚 Resources & Guides</h2>
+                <p>Everything you need to master ValidateLite schema validation</p>
+            </div>
+
+            <div class="resources-grid">
+                <a href="https://github.com/litedatum/validatelite/blob/main/docs/usage.md" class="resource-card">
+                    <h3>📖 Usage Guide</h3>
+                    <p>Complete guide to all commands, data sources, rule types, and the Desired Type system</p>
+                </a>
+                
+                <a href="https://github.com/litedatum/validatelite/blob/main/docs/CONFIG_REFERENCE.md" class="resource-card">
+                    <h3>⚙️ Configuration Reference</h3>
+                    <p>Learn how to configure ValidateLite via TOML files for advanced use cases</p>
+                </a>
+                
+                <a href="https://github.com/litedatum/validatelite/blob/main/CONTRIBUTING.md" class="resource-card">
+                    <h3>🤝 Contributing Guide</h3>
+                    <p>Join our community! Learn how to contribute to ValidateLite development</p>
+                </a>
+                
+                <a href="https://blog.litedatum.com/posts/Devlog01-data-validation-tool/" class="resource-card">
+                    <h3>📝 DevLog #1: Building Zero-Config Tool</h3>
+                    <p>Behind the scenes: How we built a data validation tool that requires zero configuration</p>
+                </a>
+                
+                <a href="https://blog.litedatum.com/posts/Devlog02-Rethinking-My-Data-Validation-Tool/" class="resource-card">
+                    <h3>🔄 DevLog #2: Platform Rethink</h3>
+                    <p>Why we scrapped our half-built platform and focused on developer experience</p>
+                </a>
+                
+                <a href="https://blog.litedatum.com/posts/Rule-Driven-Schema-Validation/" class="resource-card">
+                    <h3>🎯 Rule-Driven Schema Validation</h3>
+                    <p>Deep dive into our lightweight approach to schema validation and why it works</p>
+                </a>
+
+                <a href="what-is-schema-drift.html" class="resource-card">
+                    <h3>📝 What is Schema Drift? Complete Guide</h3>
+                    <p>Stop 3AM production failures! Learn what schema drift is, how it silently breaks ETL pipelines, and proven detection methods using ValidateLite for bulletproof data systems.</p>
+                </a>
+                <a href="database-schema-validation.html"  class="resource-card">
+                    <h3>📝 Database Schema Validation</h3>
+                    <p>Master database schema validation to prevent pipeline failures, ensure data quality, and automate schema drift detection. Essential strategies for data engineers and architects.</p>
+                </a>
+                <a href="validateLite-vs-json-schema-validator.html"  class="resource-card">
+                    <h3>📝 ValidateLite vs. JSON Schema Validator</h3>
+                    <p>Discover why JSON Schema Validator handles documents while ValidateLite validates database schemas. Learn which tool fits your data validation needs.</p>
+                </a>
+                <a href="data-validation-tools.html"  class="resource-card">
+                    <h3>📝 Data Validation Tools</h3>
+                    <p>Discover how data validation tools prevent corrupt data from entering your systems. Learn essential validation techniques, explore schema validation methods using ValidateLite.</p>
+                </a>
+                <a href="database-validation-guide.html"  class="resource-card">
+                    <h3>📝 Database Validation Guide</h3>
+                    <p>Master database validation techniques from constraints to application-layer checks. Learn referential integrity, foreign keys, and how validatelite protects your database.</p>
+                </a>
+                <a href="end-excel-data-validation-hell.html"  class="resource-card">
+                    <h3>📝 The End of Excel Data Validation Hell</h3>
+                    <p>Stop wrestling with Excel's complex data validation rules. Discover ValidateLite's revolutionary Desired Type feature - the CSV validator that predicts data conversion success before migration.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 LiteDatum. All Rights Reserved.</p>
-            <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-               <a href="https://github.com/litedatum" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                   <i class="fab fa-github"></i> GitHub
-               </a>
-               <a href="https://x.com/Litedatum" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                   <i class="fab fa-x-twitter"></i> X (Twitter)
-               </a>
-               <a href="https://www.linkedin.com/in/qiang-fan-649b80141" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                   <i class="fab fa-linkedin"></i> LinkedIn
-               </a>
-               <a href="https://blog.litedatum.com/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                   <i class="fas fa-blog"></i> Blog
-               </a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ValidateLite</h4>
+                    <a href="https://github.com/litedatum/validatelite">GitHub Repository</a>
+                    <a href="https://pypi.org/project/validatelite/">PyPI Package</a>
+                    <a href="https://github.com/litedatum/validatelite/issues">Report Issues</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <a href="https://github.com/litedatum/validatelite/blob/main/README.md">Getting Started</a>
+                    <a href="https://github.com/litedatum/validatelite/blob/main/docs/usage.md">User Guide</a>
+                    <a href="https://github.com/litedatum/validatelite/blob/main/docs/CONFIG_REFERENCE.md">API Reference</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="https://blog.litedatum.com">Technical Blog</a>
+                    <a href="https://github.com/litedatum/validatelite/discussions">Discussions</a>
+                    <a href="https://github.com/litedatum/validatelite/blob/main/CONTRIBUTING.md">Contribute</a>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #4a5568; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2024 LiteDatum. Built by <a href="#" style="color: #68d391;">Charles Fan</a>, Senior Data Architect.</p>
+                <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 0.9rem;">Licensed under MIT. Join our growing community of data professionals.</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Add smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add loading animation
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease-in-out';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-    </script>
 </body>
 </html>
